@@ -2,36 +2,32 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Code2, TrendingUp, Users, Award, ArrowRight, Terminal, Cpu, ChevronRight, Activity, Globe, Zap } from 'lucide-react';
+import { Code2, TrendingUp, Users, Award, ArrowRight, Terminal, Cpu, ChevronRight, Activity, Globe, Zap, ArrowUpRight } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 // --- Canonical Data Sources ---
-const FEATURES_DATA = [
+const RESEARCH_AREAS = [
   {
     icon: Code2,
-    title: 'Algorithmic Trading',
-    description: 'Develop and backtest trading strategies using Python and advanced statistical methods.',
-    stat: '01'
+    title: 'Quantitative Methods',
+    description: 'Advanced statistical analysis and algorithmic development.',
   },
   {
     icon: TrendingUp,
-    title: 'Data Analysis',
-    description: 'Extract insights from financial data using machine learning and quantitative techniques.',
-    stat: '02'
+    title: 'Market Dynamics',
+    description: 'Understanding financial systems through data.',
   },
   {
     icon: Users,
-    title: 'Collaborative Projects',
-    description: 'Work on real-world projects with fellow members and industry mentors.',
-    stat: '03'
+    title: 'Collaborative Research',
+    description: 'Cross-disciplinary projects with industry partners.',
   },
   {
     icon: Award,
-    title: 'Competitions',
-    description: 'Participate in hackathons, trading competitions, and coding challenges.',
-    stat: '04'
+    title: 'Innovation Labs',
+    description: 'Experimental frameworks and emerging technologies.',
   }
 ];
 
@@ -186,123 +182,95 @@ export default function HomePage() {
 
       <Marquee items={["QUANTITATIVE", "ALGORITHMIC", "FINANCE", "DATA SCIENCE", "MACHINE LEARNING"]} />
 
-      {/* STICKY SCROLL SECTION - Who We Are */}
-      <section className="relative w-full bg-primary py-32 px-4 md:px-8">
+      {/* STATEMENT SECTION - Editorial */}
+      <section className="relative w-full bg-primary py-32 px-4 md:px-8 border-t border-secondary/10">
         <div className="max-w-[120rem] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
-            {/* Sticky Title */}
-            <div className="lg:w-1/3">
-              <div className="sticky top-32">
-                <h2 className="font-heading text-5xl md:text-7xl text-secondary mb-8">
-                  ABOUT<br />US
-                </h2>
-                <div className="w-24 h-2 bg-accentcyan mb-8" />
-                <p className="font-paragraph text-secondary/60 text-lg max-w-sm">
-                  Super Quant Club is a student-led college club built for students who enjoy numbers, logic, coding, and smart decision-making. Our goal is to bridge theory with real-world applications through events, workshops, discussions, and competitions.
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 items-start">
+            {/* Left - Tagline */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-1"
+            >
+              <h2 className="font-heading text-5xl md:text-6xl text-secondary leading-tight">
+                ONLY THE<br />
+                <span className="text-accentcyan">CURIOUS</span>
+              </h2>
+            </motion.div>
 
-            {/* Scrolling Content */}
-            <div className="lg:w-2/3 flex flex-col gap-24">
-              {[
-                {
-                  title: "What We Do",
-                  text: "Super Quant Club is a college club focused on quantitative finance, data science, problem-solving, coding, analytics, and competitive events. We organize workshops, hackathons, quizzes, and learning sessions to help students master these critical skills.",
-                  img: "https://static.wixstatic.com/media/34a768_5ba68bbdb48540aba444218615afa2fe~mv2.png?originWidth=768&originHeight=448"
-                },
-                {
-                  title: "Our Vibe",
-                  text: "The vibe is modern, techy, and aesthetic. We believe in creating an environment where innovation thrives, ideas are shared freely, and every member can grow. Founded by Vikramjot, we're building a community that transforms passion into excellence.",
-                  img: "https://static.wixstatic.com/media/34a768_ef4995290d68425fac756a75bb3bcdf9~mv2.png?originWidth=768&originHeight=448"
-                }
-              ].map((item, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6 }}
-                  className="group"
-                >
-                  <div className="relative h-[400px] md:h-[500px] w-full mb-8 overflow-hidden rounded-sm border border-secondary/10">
-                    <div className="absolute inset-0 bg-accentcyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay" />
-                    <Image 
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
-                      width={800}
-                    />
-                  </div>
-                  <h3 className="font-heading text-3xl md:text-4xl text-secondary mb-4 flex items-center gap-4">
-                    <span className="text-accentcyan font-mono text-xl">0{idx + 1}</span>
-                    {item.title}
-                  </h3>
-                  <p className="font-paragraph text-xl text-secondary/70 leading-relaxed max-w-2xl">
-                    {item.text}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+            {/* Right - Description */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="lg:col-span-2"
+            >
+              <p className="font-paragraph text-xl md:text-2xl text-secondary/60 leading-relaxed mb-8">
+                We are a collective of researchers, thinkers, and builders. Not a club for everyone—only for those who ask better questions, who see patterns others miss, who believe that rigorous thinking can reshape the world.
+              </p>
+              <div className="w-24 h-1 bg-accentcyan" />
+            </motion.div>
           </div>
         </div>
       </section>
 
       <SectionDivider />
 
-      {/* FEATURES GRID - What We Do */}
+      {/* RESEARCH AREAS - Asymmetric Grid */}
       <section className="relative w-full bg-primary py-32 px-4 md:px-8 overflow-hidden">
         {/* Background Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
         <div className="max-w-[120rem] mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24">
-            <div>
-              <h2 className="font-heading text-5xl md:text-7xl text-secondary mb-4">
-                CORE <span className="text-accentcyan">MODULES</span>
-              </h2>
-              <p className="font-paragraph text-secondary/60 text-lg">
-                Our curriculum covers the full spectrum of quantitative finance.
-              </p>
-            </div>
-            <div className="hidden md:block">
-              <Terminal className="w-12 h-12 text-secondary/20" />
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-24"
+          >
+            <h2 className="font-heading text-5xl md:text-7xl text-secondary mb-4">
+              OUR <span className="text-accentcyan">RESEARCH</span>
+            </h2>
+            <p className="font-paragraph text-secondary/50 text-lg max-w-2xl">
+              Focused investigations into quantitative systems, market behavior, and computational innovation.
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FEATURES_DATA.map((feature, index) => (
+          {/* Asymmetric Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-max">
+            {RESEARCH_AREAS.map((area, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group relative bg-secondary/5 border border-secondary/10 p-8 hover:border-accentcyan/50 transition-colors duration-300 h-full flex flex-col justify-between"
+                className={`group relative bg-secondary/5 border border-secondary/10 p-8 hover:border-accentcyan/50 transition-all duration-300 flex flex-col justify-between ${
+                  index === 0 ? 'md:row-span-2' : ''
+                } ${index === 3 ? 'md:col-span-2' : ''}`}
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-accentcyan scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 
                 <div>
-                  <div className="flex justify-between items-start mb-8">
-                    <div className="p-3 bg-secondary/10 rounded-sm text-accentcyan group-hover:bg-accentcyan group-hover:text-primary transition-colors duration-300">
-                      <feature.icon className="w-6 h-6" />
-                    </div>
-                    <span className="font-mono text-secondary/30 text-xl font-bold">
-                      {feature.stat}
-                    </span>
+                  <div className="p-3 bg-secondary/10 rounded-sm text-accentcyan group-hover:bg-accentcyan group-hover:text-primary transition-colors duration-300 w-fit mb-8">
+                    <area.icon className="w-6 h-6" />
                   </div>
                   
                   <h3 className="font-heading text-2xl text-secondary mb-4 group-hover:text-accentcyan transition-colors">
-                    {feature.title}
+                    {area.title}
                   </h3>
                   <p className="font-paragraph text-secondary/60 leading-relaxed">
-                    {feature.description}
+                    {area.description}
                   </p>
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-secondary/10 flex items-center text-sm font-mono text-secondary/40 group-hover:text-accentcyan transition-colors">
-                  <span>EXPLORE_MODULE</span>
-                  <ChevronRight className="w-4 h-4 ml-auto" />
+                  <span>LEARN_MORE</span>
+                  <ArrowUpRight className="w-4 h-4 ml-auto" />
                 </div>
               </motion.div>
             ))}
@@ -312,7 +280,24 @@ export default function HomePage() {
 
       {/* TECH STACK MARQUEE */}
       <div className="py-12 bg-secondary/5 border-y border-secondary/10">
-        <Marquee items={TECH_STACK} direction="right" />
+        <div className="relative flex overflow-hidden py-6 bg-primary border-y border-secondary/10">
+          <motion.div
+            className="flex whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+          >
+            {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map((item, i) => (
+              <div key={i} className="flex items-center mx-8">
+                <span className="text-3xl md:text-5xl font-heading font-black text-transparent stroke-text-secondary opacity-30 uppercase tracking-tighter">
+                  {item}
+                </span>
+                <Zap className="w-5 h-5 text-accentcyan mx-6 opacity-50" />
+              </div>
+            ))}
+          </motion.div>
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-primary to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-primary to-transparent z-10" />
+        </div>
       </div>
 
       {/* VISUAL BREATHER - Parallax */}
@@ -334,68 +319,82 @@ export default function HomePage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Cpu className="w-16 h-16 text-accentcyan mx-auto mb-8 animate-pulse" />
             <h2 className="font-heading text-4xl md:text-6xl lg:text-7xl text-secondary mb-8 leading-tight">
-              "WE DON'T PREDICT THE FUTURE.<br />
-              WE <span className="text-accentcyan">ENGINEER</span> IT."
+              RIGOROUS<br />
+              THINKING<br />
+              <span className="text-accentcyan">CHANGES</span> EVERYTHING
             </h2>
             <div className="w-24 h-1 bg-secondary/20 mx-auto" />
           </motion.div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
+      {/* CTA SECTION - Minimal & Bold */}
       <section className="relative w-full bg-primary py-32 px-4 md:px-8 border-t border-secondary/10">
-        <div className="max-w-[120rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="font-heading text-6xl md:text-8xl text-secondary mb-6">
-              READY TO<br />
-              <span className="text-accentcyan">LEVEL UP?</span>
-            </h2>
-            <p className="font-paragraph text-xl text-secondary/60 mb-12 max-w-lg">
-              Join a community of passionate coders, analysts, and innovators. Access exclusive workshops, mentorship, and career opportunities.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Link 
-                to="/contact"
-                className="inline-flex items-center justify-center px-10 py-5 bg-accentcyan text-primary font-heading font-bold text-xl rounded-sm hover:bg-white transition-colors duration-300"
-              >
-                APPLY NOW
-              </Link>
-              <Link 
-                to="/contact"
-                className="inline-flex items-center justify-center px-10 py-5 border border-secondary/20 text-secondary font-heading font-bold text-xl rounded-sm hover:bg-secondary/10 transition-colors duration-300"
-              >
-                CONTACT US
-              </Link>
-            </div>
-          </div>
+        <div className="max-w-[120rem] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="font-heading text-6xl md:text-8xl text-secondary mb-8 leading-tight">
+                READY TO<br />
+                <span className="text-accentcyan">THINK</span><br />
+                DIFFERENTLY?
+              </h2>
+              <p className="font-paragraph text-lg text-secondary/50 mb-12 max-w-lg leading-relaxed">
+                Join a collective of intellectuals pushing the boundaries of quantitative research and innovation.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Link 
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-10 py-5 bg-accentcyan text-primary font-heading font-bold text-lg rounded-sm hover:bg-white transition-colors duration-300"
+                >
+                  APPLY
+                </Link>
+                <Link 
+                  to="/members"
+                  className="inline-flex items-center justify-center px-10 py-5 border border-secondary/20 text-secondary font-heading font-bold text-lg rounded-sm hover:bg-secondary/10 transition-colors duration-300"
+                >
+                  MEET THE TEAM
+                </Link>
+              </div>
+            </motion.div>
 
-          <div className="relative h-[400px] lg:h-[600px] w-full rounded-sm overflow-hidden border border-secondary/10 group">
-            <div className="absolute inset-0 bg-accentcyan/10 z-10 mix-blend-overlay" />
-            <Image 
-              src="https://static.wixstatic.com/media/34a768_330f9ddd2aa3457aae4762f56213a0ad~mv2.png?originWidth=960&originHeight=576"
-              alt="Team working on code"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              width={1000}
-            />
-            
-            {/* Decorative UI Overlay */}
-            <div className="absolute top-4 right-4 z-20 flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6 border-t border-secondary/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
-              <div className="flex items-center gap-4">
-                <Globe className="w-8 h-8 text-accentcyan" />
-                <div>
-                  <p className="font-heading text-secondary text-lg">GLOBAL NETWORK</p>
-                  <p className="font-mono text-xs text-secondary/50">CONNECTING MINDS ACROSS CAMPUS</p>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative h-[400px] lg:h-[600px] w-full rounded-sm overflow-hidden border border-secondary/10 group"
+            >
+              <div className="absolute inset-0 bg-accentcyan/10 z-10 mix-blend-overlay" />
+              <Image 
+                src="https://static.wixstatic.com/media/34a768_330f9ddd2aa3457aae4762f56213a0ad~mv2.png?originWidth=960&originHeight=576"
+                alt="Team working on code"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                width={1000}
+              />
+              
+              {/* Decorative UI Overlay */}
+              <div className="absolute top-4 right-4 z-20 flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6 border-t border-secondary/10 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20">
+                <div className="flex items-center gap-4">
+                  <Zap className="w-8 h-8 text-accentcyan" />
+                  <div>
+                    <p className="font-heading text-secondary text-lg">ELITE COLLECTIVE</p>
+                    <p className="font-mono text-xs text-secondary/50">WHERE IDEAS BECOME REALITY</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

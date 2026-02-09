@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BaseCrudService } from '@/integrations';
 import { Activities } from '@/entities';
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 import { format } from 'date-fns';
 
 export default function ActivitiesPage() {
@@ -37,77 +37,78 @@ export default function ActivitiesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-primary text-secondary">
       <Header />
       
-      <section className="pt-32 pb-24 bg-primary">
+      <section className="pt-32 pb-24 bg-primary border-b border-secondary/10">
         <div className="max-w-[120rem] mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="font-heading text-6xl md:text-7xl text-primaryForeground mb-6">
-              Our <span className="text-accentcyan">Activities</span>
+            <h1 className="font-heading text-6xl md:text-8xl text-secondary mb-6">
+              <span className="text-accentcyan">EVENTS</span> & WORKSHOPS
             </h1>
-            <p className="font-paragraph text-xl text-primaryForeground/90 max-w-3xl">
-              Explore our workshops, hackathons, and collaborative events that shape the future of quantitative finance.
+            <p className="font-paragraph text-lg text-secondary/60 max-w-2xl">
+              Collaborative experiences that advance quantitative thinking and innovation.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="max-w-[120rem] mx-auto px-8">
+      <section className="py-32 px-4 md:px-8">
+        <div className="max-w-[120rem] mx-auto">
           <div className="min-h-[600px]">
             {isLoading ? null : activities.length > 0 ? (
-              <div className="space-y-12">
+              <div className="space-y-24">
                 {activities.map((activity, index) => (
                   <motion.div
                     key={activity._id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
                       index % 2 === 1 ? 'lg:grid-flow-dense' : ''
                     }`}
                   >
-                    <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                      <div className="relative h-96 bg-primary rounded-lg overflow-hidden">
+                    <div className={`group relative overflow-hidden ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                      <div className="relative h-96 bg-primary border border-secondary/10 overflow-hidden">
                         {activity.activityImage && (
                           <Image 
                             src={activity.activityImage}
                             alt={activity.activityTitle || 'Activity image'}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                             width={800}
                           />
                         )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                     </div>
                     
                     <div className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}>
                       {activity.eventType && (
-                        <span className="inline-block bg-accentcyan text-primary font-paragraph text-sm px-4 py-2 rounded-full mb-4">
+                        <span className="inline-block border border-accentcyan text-accentcyan font-paragraph text-xs px-4 py-2 rounded-sm mb-6 uppercase tracking-wide">
                           {activity.eventType}
                         </span>
                       )}
-                      <h2 className="font-heading text-4xl text-secondaryForeground mb-4">
+                      <h2 className="font-heading text-4xl md:text-5xl text-secondary mb-6">
                         {activity.activityTitle}
                       </h2>
                       
-                      <div className="flex flex-wrap gap-6 mb-6">
+                      <div className="flex flex-wrap gap-8 mb-8 pb-8 border-b border-secondary/10">
                         {activity.activityDate && (
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-3">
                             <Calendar className="w-5 h-5 text-accentcyan" />
-                            <span className="font-paragraph text-base text-secondaryForeground/80">
+                            <span className="font-paragraph text-base text-secondary/70">
                               {formatDate(activity.activityDate)}
                             </span>
                           </div>
                         )}
                         {activity.location && (
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-3">
                             <MapPin className="w-5 h-5 text-accentcyan" />
-                            <span className="font-paragraph text-base text-secondaryForeground/80">
+                            <span className="font-paragraph text-base text-secondary/70">
                               {activity.location}
                             </span>
                           </div>
@@ -115,17 +116,22 @@ export default function ActivitiesPage() {
                       </div>
                       
                       {activity.description && (
-                        <p className="font-paragraph text-lg text-secondaryForeground/80">
+                        <p className="font-paragraph text-lg text-secondary/60 leading-relaxed mb-8">
                           {activity.description}
                         </p>
                       )}
+
+                      <div className="flex items-center gap-2 text-accentcyan font-paragraph text-sm uppercase tracking-wide">
+                        <span>Learn More</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
               </div>
             ) : (
               <div className="text-center py-16">
-                <p className="font-paragraph text-xl text-secondaryForeground/60">
+                <p className="font-paragraph text-xl text-secondary/60">
                   No activities found.
                 </p>
               </div>
