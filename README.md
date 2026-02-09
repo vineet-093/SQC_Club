@@ -23,7 +23,7 @@ Our focus is on *depth, clarity, and intellectual curiosity* rather than surface
 ## 🌐 Live Website
 
 🔗 **Website Link:**  
-https://vineet-093.github.io/super-quant-club/
+https://github.com/vineet-093/SQC_Club
 
 
 
