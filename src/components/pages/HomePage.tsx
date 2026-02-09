@@ -112,7 +112,7 @@ export default function HomePage() {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[1px] bg-accentcyan" />
               <span className="font-paragraph text-accentcyan tracking-[0.2em] text-sm uppercase font-semibold">
-                Est. 2024
+                Est. 2022 • NIT Jalandhar
               </span>
             </div>
 
@@ -158,8 +158,8 @@ export default function HomePage() {
             transition={{ duration: 1.5, ease: "easeOut" }}
           >
             <Image 
-              src="https://static.wixstatic.com/media/34a768_bbfadef1be91453993b14fdf09f28cc6~mv2.png?originWidth=1152&originHeight=576"
-              alt="Abstract geometric structure representing quantitative data"
+              src="https://static.wixstatic.com/media/34a768_6a81f84214404eb29de1c9d97a70a85c~mv2.png?originWidth=1152&originHeight=576"
+              alt="Robotics dog representing innovation and technology"
               className="w-full h-full object-cover"
               width={1200}
             />
@@ -194,11 +194,11 @@ export default function HomePage() {
             <div className="lg:w-1/3">
               <div className="sticky top-32">
                 <h2 className="font-heading text-5xl md:text-7xl text-secondary mb-8">
-                  WHO<br />WE ARE
+                  ABOUT<br />US
                 </h2>
                 <div className="w-24 h-2 bg-accentcyan mb-8" />
                 <p className="font-paragraph text-secondary/60 text-lg max-w-sm">
-                  Super Quant Coders is a premier college club bridging the gap between theoretical mathematics and practical financial engineering.
+                  Super Quant Club is a student-led college club built for students who enjoy numbers, logic, coding, and smart decision-making. Our goal is to bridge theory with real-world applications through events, workshops, discussions, and competitions.
                 </p>
               </div>
             </div>
@@ -207,13 +207,13 @@ export default function HomePage() {
             <div className="lg:w-2/3 flex flex-col gap-24">
               {[
                 {
-                  title: "The Mission",
-                  text: "To empower students with the skills needed to dominate in quantitative finance, algorithmic trading, and data science. We don't just study the market; we decode it.",
+                  title: "What We Do",
+                  text: "Super Quant Club is a college club focused on quantitative finance, data science, problem-solving, coding, analytics, and competitive events. We organize workshops, hackathons, quizzes, and learning sessions to help students master these critical skills.",
                   img: "https://static.wixstatic.com/media/34a768_5ba68bbdb48540aba444218615afa2fe~mv2.png?originWidth=768&originHeight=448"
                 },
                 {
-                  title: "The Method",
-                  text: "Through rigorous workshops, hackathons, and collaborative projects, we apply advanced statistical methods to real-world financial datasets. Theory meets execution.",
+                  title: "Our Vibe",
+                  text: "The vibe is modern, techy, and aesthetic. We believe in creating an environment where innovation thrives, ideas are shared freely, and every member can grow. Founded by Vikramjot, we're building a community that transforms passion into excellence.",
                   img: "https://static.wixstatic.com/media/34a768_ef4995290d68425fac756a75bb3bcdf9~mv2.png?originWidth=768&originHeight=448"
                 }
               ].map((item, idx) => (
