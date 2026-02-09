@@ -133,7 +133,7 @@ export default function HomePage() {
               </Link>
               
               <Link 
-                to="/about"
+                to="/activities"
                 className="group px-8 py-4 border border-secondary/20 text-secondary font-heading font-bold text-lg tracking-wide hover:bg-secondary/5 transition-colors rounded-sm"
               >
                 EXPLORE

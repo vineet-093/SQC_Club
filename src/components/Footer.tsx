@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -15,35 +16,35 @@ export default function Footer() {
           <div>
             <h4 className="font-heading text-sm uppercase tracking-wide text-secondary mb-6">Navigation</h4>
             <ul className="space-y-3 font-paragraph text-sm">
-              <li><a href="/" className="text-secondary/60 hover:text-accentcyan transition-colors">Home</a></li>
-              <li><a href="/members" className="text-secondary/60 hover:text-accentcyan transition-colors">Members</a></li>
-              <li><a href="/activities" className="text-secondary/60 hover:text-accentcyan transition-colors">Activities</a></li>
-              <li><a href="/achievements" className="text-secondary/60 hover:text-accentcyan transition-colors">Achievements</a></li>
+              <li><Link to="/" className="text-secondary/60 hover:text-accentcyan transition-colors">Home</Link></li>
+              <li><Link to="/members" className="text-secondary/60 hover:text-accentcyan transition-colors">Members</Link></li>
+              <li><Link to="/activities" className="text-secondary/60 hover:text-accentcyan transition-colors">Activities</Link></li>
+              <li><Link to="/achievements" className="text-secondary/60 hover:text-accentcyan transition-colors">Achievements</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-heading text-sm uppercase tracking-wide text-secondary mb-6">Resources</h4>
             <ul className="space-y-3 font-paragraph text-sm">
-              <li><a href="/contact" className="text-secondary/60 hover:text-accentcyan transition-colors">Contact</a></li>
-              <li><a href="#" className="text-secondary/60 hover:text-accentcyan transition-colors">Apply</a></li>
-              <li><a href="#" className="text-secondary/60 hover:text-accentcyan transition-colors">Events</a></li>
+              <li><Link to="/contact" className="text-secondary/60 hover:text-accentcyan transition-colors">Contact</Link></li>
+              <li><Link to="/contact" className="text-secondary/60 hover:text-accentcyan transition-colors">Apply</Link></li>
+              <li><Link to="/activities" className="text-secondary/60 hover:text-accentcyan transition-colors">Events</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-heading text-sm uppercase tracking-wide text-secondary mb-6">Connect</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
+              <a href="mailto:contact@superquantclub.com" className="w-10 h-10 rounded-sm bg-secondary/10 hover:bg-accentcyan hover:text-primary flex items-center justify-center transition-colors">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -56,8 +57,8 @@ export default function Footer() {
               © {new Date().getFullYear()} Super Quant Club. All rights reserved.
             </p>
             <div className="flex gap-8 font-paragraph text-xs text-secondary/50">
-              <a href="#" className="hover:text-accentcyan transition-colors">Privacy</a>
-              <a href="#" className="hover:text-accentcyan transition-colors">Terms</a>
+              <Link to="/contact" className="hover:text-accentcyan transition-colors">Privacy</Link>
+              <Link to="/contact" className="hover:text-accentcyan transition-colors">Terms</Link>
             </div>
           </div>
         </div>
