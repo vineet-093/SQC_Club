@@ -23,8 +23,7 @@ Our focus is on *depth, clarity, and intellectual curiosity* rather than surface
 ## 🌐 Live Website
 
 🔗 **Website Link:**  
-https://github.com/vineet-093/SQC_Club
-
+https://ntiyhy-my-site-2yi6yizw-vineet8422.wix-vibe-site.com/
 
 
 ---
